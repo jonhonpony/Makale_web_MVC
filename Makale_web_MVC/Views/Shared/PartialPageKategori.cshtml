@@ -1,0 +1,18 @@
+﻿@using MakaleBll;
+@using Makale_entities;
+
+@{
+    KategoriYonet ky = new KategoriYonet(); // burada çağırdığımız için modele gerek yok @model  zaten liste yi model olarak kullanıyoruz direkt bu şekilde
+    List<Kategori> liste = ky.Listele();
+}
+
+
+<p class="lead">Kategoriler</p>
+<div class="list-group">
+    <a href="/Home/Index"class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>Tümü</a>
+    @foreach (var kategori in liste)
+    {
+        <a href="/Home/Kategori/@kategori.Id " class="list-group-item">@kategori.Baslik</a>// tıkladığımız kategorilere ait makaleleri getirmesini istedik bunun için ayrı bir action yazılacak ve ıd lerinden ayırt edilecek
+    }
+
+</div>
